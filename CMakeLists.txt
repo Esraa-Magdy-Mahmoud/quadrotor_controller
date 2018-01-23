@@ -117,8 +117,9 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
+  include ${catkin_INCLUDE_DIRS}
 # include
-  ${catkin_INCLUDE_DIRS}
+#  ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -198,3 +199,21 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+
+include_directories(
+  include
+  ${catkin_INCLUDE_DIRS}
+)
+
+
+add_executable(${PROJECT_NAME} 
+  src/${PROJECT_NAME}_node.cpp
+  src/QuadRotorController.cpp
+)
+
+
+## Specify libraries to link a library or executable target against
+target_link_libraries(${PROJECT_NAME}
+  ${catkin_LIBRARIES}
+)
