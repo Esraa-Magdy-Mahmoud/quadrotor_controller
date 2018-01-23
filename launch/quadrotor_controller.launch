@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<launch>
+  
+  <arg name="use_sim_time" default="true"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+  </include>
+
+  <arg name="model" default="$(find hector_quadrotor_description)/urdf/quadrotor_hokuyo_utm30lx.gazebo.xacro" />
+
+   <group ns="my_uav">
+     <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
+       <arg name="name" value="my_uav" />
+       <arg name="tf_prefix" value="my_uav" />
+       <arg name="model" value="$(arg model)" />
+       <arg name="y" value="-1.0" />
+     </include>
+   </group>
+
+</launch>
