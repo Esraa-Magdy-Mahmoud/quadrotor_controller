@@ -3,6 +3,8 @@
 
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
+#include "quadrotor_controller/Controller.h"
+
 
 namespace quadrotor_controller
 {
@@ -16,11 +18,15 @@ namespace quadrotor_controller
         
 		//---Methods definition---//
 		bool readParameters();
+	
+
         //---
+
+
 
         
 		ros::NodeHandle nodeHandle_;
-        
+        //Controller controller_;
 
 
 
