@@ -33,11 +33,11 @@ namespace quadrotor_controller
 		double momenty_;
 		double momentz_;
 
-			//Target point
+	   //Target point position
 		double pos_x_target;
 		double pos_y_target; 
     	double pos_z_target = 10.0;
-			//
+	  //
 		double last_error_ = 0.0;
 		double error_sum_  = 0.0;
 
