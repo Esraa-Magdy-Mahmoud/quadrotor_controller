@@ -7,15 +7,14 @@
     <arg name="use_sim_time" value="$(arg use_sim_time)"/>
   </include>
 
-  <arg name="model" default="$(find hector_quadrotor_description)/urdf/quadrotor_hokuyo_utm30lx.gazebo.xacro" />
+  <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch" >
+    <arg name="model" value="$(find hector_quadrotor_description)/urdf/quadrotor_hokuyo_utm30lx.gazebo.xacro"/>
 
-   <group ns="my_uav">
-     <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch">
-       <arg name="name" value="my_uav" />
-       <arg name="tf_prefix" value="my_uav" />
-       <arg name="model" value="$(arg model)" />
-       <arg name="y" value="-1.0" />
-     </include>
-   </group>
-
+    
+  </include>
+	<node pkg="hector_pose_estimation" type="pose_estimation" name="hector_pose_estimation" launch-prefix="$(find quadrotor_controller)/srvhack" />
+	<node pkg="quadrotor_controller" type="quadrotor_controller" name="quadrotor_controller_node" launch-prefix="gnome-terminal --command"  />
+	
+       
+ 
 </launch>
