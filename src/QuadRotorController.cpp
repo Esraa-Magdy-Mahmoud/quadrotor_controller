@@ -43,7 +43,7 @@ namespace quadrotor_controller
         double dt = time_now - last_time_;
         if (dt == 0) 
         {
-            thrust_ = 0.0;
+            thrust_ = 0;
         }
         last_time_ = time_now ;
         double error_z   = pose_z_ - pose_z;
