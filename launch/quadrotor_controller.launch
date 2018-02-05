@@ -9,14 +9,19 @@
 
 <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch" >
     <arg name="model" value="$(find hector_quadrotor_description)/urdf/quadrotor_hokuyo_utm30lx.gazebo.xacro"/>
-   
-       
+</include>
  
 
-    
-  </include>
+  <node pkg="hector_trajectory_server" type="hector_trajectory_server" name="hector_trajectory_server" output="screen">
+    <param name="target_frame_name" type="string" value="/world" />
+    <param name="source_frame_name" type="string" value="/base_link" />
+    <param name="trajectory_update_rate" type="double" value="4" />
+    <param name="trajectory_publish_rate" type="double" value="0.25" />
+  </node>
+
+
 	<node pkg="hector_pose_estimation" type="pose_estimation" name="hector_pose_estimation" />
-  
+  <node pkg="rviz" type="rviz" name="rviz" />
        
  
 </launch>

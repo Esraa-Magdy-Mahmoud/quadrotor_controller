@@ -5,6 +5,7 @@
 #include <geometry_msgs/Twist.h>
 #include <geometry_msgs/Vector3Stamped.h>
 #include <gazebo_msgs/ModelState.h>
+#include <visualization_msgs/Marker.h>
 #include <string.h>
 #include <geometry_msgs/PoseStamped.h>
 
@@ -24,6 +25,8 @@ namespace quadrotor_controller
 		void poseCallback(const geometry_msgs::PoseStampedConstPtr &posemsg);
 		void eulerCallback(const geometry_msgs::Vector3StampedConstPtr &eulermsg);
 	    void pidController(double pose_z,double time_now);
+		void targetMarker();
+		void quadMarker();
 		//---
  
         //-- nodehandle
@@ -37,6 +40,11 @@ namespace quadrotor_controller
 		
 		ros::Publisher  velPub_;
 		geometry_msgs::Twist velmsg_; 
+		ros::Publisher visTargetPub_;
+		ros::Publisher visQuadPub_;
+		
+		visualization_msgs::Marker targetvis;
+		visualization_msgs::Marker quadvis;
 
 
 
