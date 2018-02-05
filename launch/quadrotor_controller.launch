@@ -7,14 +7,16 @@
     <arg name="use_sim_time" value="$(arg use_sim_time)"/>
   </include>
 
-  <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch" >
+<include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor.launch" >
     <arg name="model" value="$(find hector_quadrotor_description)/urdf/quadrotor_hokuyo_utm30lx.gazebo.xacro"/>
+   
+       
+ 
 
     
   </include>
-	<node pkg="hector_pose_estimation" type="pose_estimation" name="hector_pose_estimation" launch-prefix="$(find quadrotor_controller)/srvhack" />
-	<node pkg="quadrotor_controller" type="quadrotor_controller" name="quadrotor_controller_node" launch-prefix="gnome-terminal --command"  />
-	
+	<node pkg="hector_pose_estimation" type="pose_estimation" name="hector_pose_estimation" />
+  
        
  
 </launch>
