@@ -1,0 +1,5 @@
+pose_sub_topic: /uavx/pose
+euler_sub_topic: /uavx/euler
+vel_pub_topic: /uavx/cmd_vel
+target_pub_marker: /uavx/target_marker
+quad_pub_marker: /uavx/quad_marker
