@@ -22,9 +22,7 @@
       <param name="trajectory_publish_rate" type="double" value="0.25" />
     </node>
     <node pkg="hector_pose_estimation" type="pose_estimation" name="hector_pose_estimation" />
-   
-    
-  </group>
+   </group>
     
 
 

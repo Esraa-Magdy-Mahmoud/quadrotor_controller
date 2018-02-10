@@ -151,8 +151,8 @@ namespace quadrotor_controller
         quadvis.ns = "quad";
         quadvis.id = 1;
         quadvis.pose.position.x = pose_x_;
-        quadvis.pose.position.y = pose_x_;
-        quadvis.pose.position.z = pose_x_;  
+        quadvis.pose.position.y = pose_y_;
+        quadvis.pose.position.z = pose_z_;  
         quadvis.color.r = 1.0;
         quadvis.color.g = 0.0;
         quadvis.color.b = 0.0;
