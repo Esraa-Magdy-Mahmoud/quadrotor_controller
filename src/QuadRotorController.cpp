@@ -11,12 +11,12 @@ namespace quadrotor_controller
         }
 
         //--subscribers--//
-        poseSub_ = nodeHandle_.subscribe("/pose", 10,&QuadRotorController::poseCallback, this);
-        eulerSub_= nodeHandle_.subscribe("/euler",10,&QuadRotorController::eulerCallback,this);
+        poseSub_ = nodeHandle_.subscribe("/uav1/pose", 10,&QuadRotorController::poseCallback, this);
+        eulerSub_= nodeHandle_.subscribe("/uav1/euler",10,&QuadRotorController::eulerCallback,this);
 
-        velPub_  = nodeHandle_.advertise<geometry_msgs::Twist>("/cmd_vel",10);
-        visTargetPub_ = nodeHandle_.advertise<visualization_msgs::Marker>("/target_marker",10);
-        visQuadPub_ =   nodeHandle_.advertise<visualization_msgs::Marker>("/quad_marker",10);
+        velPub_  = nodeHandle_.advertise<geometry_msgs::Twist>("/uav1/cmd_vel",10);
+        visTargetPub_ = nodeHandle_.advertise<visualization_msgs::Marker>("/uav1/target_marker",10);
+        visQuadPub_ =   nodeHandle_.advertise<visualization_msgs::Marker>("/uav1/quad_marker",10);
         ROS_INFO("Successfully launched node.");
         
         
@@ -54,8 +54,7 @@ namespace quadrotor_controller
         roll_  = eulermsg->vector.x;
         timenow_ = ros::Time::now().toSec();
         QuadRotorController::pidController(pose_z_,timenow_);
-        QuadRotorController::targetMarker();
-        QuadRotorController::quadMarker();
+        QuadRotorController::visMarker();
 
         velPub_.publish(velmsg_);
         visTargetPub_.publish(targetvis);
@@ -129,43 +128,35 @@ namespace quadrotor_controller
        
 
     }
-    void QuadRotorController::targetMarker()
+    void QuadRotorController::visMarker()
     {
-        targetvis.header.frame_id = "world";
-        targetvis.header.stamp = ros::Time();
+        targetvis.header.frame_id = quadvis.header.frame_id= "uav1/world";
+        targetvis.header.stamp = quadvis.header.stamp = ros::Time();
+        targetvis.type   =  quadvis.type   =  visualization_msgs::Marker::SPHERE;
+        targetvis.action =  quadvis.action =  visualization_msgs::Marker::ADD;
+        targetvis.scale.x = quadvis.scale.x = 1;
+        targetvis.scale.y = quadvis.scale.y = 1;
+        targetvis.scale.z = quadvis.scale.z = 1;
+        targetvis.color.a = quadvis.color.a = 1.0;
+
         targetvis.ns = "target";
         targetvis.id = 0;
-        targetvis.type = visualization_msgs::Marker::SPHERE;
-        targetvis.action = visualization_msgs::Marker::ADD;
         targetvis.pose.position.x = pos_x_target;
         targetvis.pose.position.y = pos_y_target;
         targetvis.pose.position.z = pos_z_target;  
-        targetvis.scale.x = 1;
-        targetvis.scale.y = 1;
-        targetvis.scale.z = 1;
-        targetvis.color.a = 1.0; // Don't forget to set the alpha!
         targetvis.color.r = 0.0;
         targetvis.color.g = 1.0;
         targetvis.color.b = 1.0;
-    }
-     void QuadRotorController::quadMarker()
-    {
-        quadvis.header.frame_id = "world";
-        quadvis.header.stamp = ros::Time();
+
         quadvis.ns = "quad";
         quadvis.id = 1;
-        quadvis.type = visualization_msgs::Marker::SPHERE;
-        quadvis.action = visualization_msgs::Marker::ADD;
         quadvis.pose.position.x = pose_x_;
         quadvis.pose.position.y = pose_x_;
         quadvis.pose.position.z = pose_x_;  
-        quadvis.scale.x = 1;
-        quadvis.scale.y = 1;
-        quadvis.scale.z = 1;
-        quadvis.color.a = 1.0; // Don't forget to set the alpha!
         quadvis.color.r = 1.0;
         quadvis.color.g = 0.0;
         quadvis.color.b = 0.0;
+
     }
     
 

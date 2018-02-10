@@ -25,8 +25,7 @@ namespace quadrotor_controller
 		void poseCallback(const geometry_msgs::PoseStampedConstPtr &posemsg);
 		void eulerCallback(const geometry_msgs::Vector3StampedConstPtr &eulermsg);
 	    void pidController(double pose_z,double time_now);
-		void targetMarker();
-		void quadMarker();
+		void visMarker();
 		//---
  
         //-- nodehandle
