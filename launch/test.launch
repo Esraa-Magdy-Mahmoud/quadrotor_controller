@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<launch>
+  
+    
+  <group ns = "uav1">
+     <node pkg="quadrotor_controller" type="quadrotor_controller" name="quadrotor_controller_node" output="screen">
+        <remap from="/pose" to="/uav1/pose"/>
+        <remap from="/euler" to="/uav1/euler"/>
+        <remap from="/cmd_vel" to="/uav1/cmd_vel"/>
+        <remap from="/target_marker" to="/uav1/target_marker"/>
+        <remap from="/quad_marker" to="/uav1/quad_marker"/>
+        <rosparam>
+            target_y : 1.0
+            target_x : 0.0
+        </rosparam>
+     </node>
+   </group>  
+
+     <group ns = "uav2">
+     <node pkg="quadrotor_controller" type="quadrotor_controller" name="quadrotor_controller_node" output="screen">
+        <remap from="/pose" to="/uav2/pose"/>
+        <remap from="/euler" to="/uav2/euler"/>
+        <remap from="/cmd_vel" to="/uav2/cmd_vel"/>
+        <remap from="/target_marker" to="/uav2/target_marker"/>
+        <remap from="/quad_marker" to="/uav2/quad_marker"/>
+        <rosparam>
+            target_y : -1.0
+            target_x : 0.0
+        </rosparam>
+     </node>
+   </group> 
+
+   <group ns = "uav3">
+     <node pkg="quadrotor_controller" type="quadrotor_controller" name="quadrotor_controller_node" output="screen">
+        <remap from="/pose" to="/uav3/pose"/>
+        <remap from="/euler" to="/uav3/euler"/>
+        <remap from="/cmd_vel" to="/uav3/cmd_vel"/>
+        <remap from="/target_marker" to="/uav3/target_marker"/>
+        <remap from="/quad_marker" to="/uav3/quad_marker"/>
+        <rosparam>
+            target_y : 0.0
+            target_x : 1.0
+        </rosparam>
+     </node>
+
+   </group> 
+
+   <group ns = "uav4">
+     <node pkg="quadrotor_controller" type="quadrotor_controller" name="quadrotor_controller_node" output="screen">
+        <remap from="/pose" to="/uav4/pose"/>
+        <remap from="/euler" to="/uav4/euler"/>
+        <remap from="/cmd_vel" to="/uav4/cmd_vel"/>
+        <remap from="/target_marker" to="/uav4/target_marker"/>
+        <remap from="/quad_marker" to="/uav4/quad_marker"/>
+        <rosparam>
+            target_y : 0.0
+            target_x : -1.0
+        </rosparam>
+     </node>
+   </group> 
+
+
+    
+
+</launch>
