@@ -30,6 +30,17 @@ a 3D PID hover controller for the Quadrotor .
   $ git clone -b kinetic-devel https://github.com/tu-darmstadt-ros-pkg/hector_models
   $ git clone -b catkin https://github.com/tu-darmstadt-ros-pkg/hector_slam
   ```
+## Experiment the Quadrotor controller node :
+ ```
+ $ roslaunch quadrotor_controller quadrotor_controller.launch
+ $ roslaunch quadrotor_controller one_quad.launch
+  ``` 
+## Multi-Quadrotors hover :
+  ```
+ $ roslaunch quadrotor_controller multi_quadrotor_controller.launch
+ $ roslaunch quadrotor_controller test.launch
+  ```
+ 
   
 
 
