@@ -11,12 +11,12 @@ namespace quadrotor_controller
         }
 
         //--subscribers--//
-        poseSub_ = nodeHandle_.subscribe("/uav1/pose", 10,&QuadRotorController::poseCallback, this);
-        eulerSub_= nodeHandle_.subscribe("/uav1/euler",10,&QuadRotorController::eulerCallback,this);
+        poseSub_ = nodeHandle_.subscribe("/pose", 10,&QuadRotorController::poseCallback, this);
+        eulerSub_= nodeHandle_.subscribe("/euler",10,&QuadRotorController::eulerCallback,this);
 
-        velPub_  = nodeHandle_.advertise<geometry_msgs::Twist>("/uav1/cmd_vel",10);
-        visTargetPub_ = nodeHandle_.advertise<visualization_msgs::Marker>("/uav1/target_marker",10);
-        visQuadPub_ =   nodeHandle_.advertise<visualization_msgs::Marker>("/uav1/quad_marker",10);
+        velPub_  = nodeHandle_.advertise<geometry_msgs::Twist>("/cmd_vel",10);
+        visTargetPub_ = nodeHandle_.advertise<visualization_msgs::Marker>("/target_marker",10);
+        visQuadPub_ =   nodeHandle_.advertise<visualization_msgs::Marker>("/quad_marker",10);
         ROS_INFO("Successfully launched node.");
         
         
@@ -34,6 +34,17 @@ namespace quadrotor_controller
 
     bool QuadRotorController::readParameters()
     {
+        if (!nodeHandle_.getParam("target_x",pos_x_target)) 
+            {  
+                ROS_ERROR("Could not read target_x .");
+                return false;
+            }
+        if (!nodeHandle_.getParam("target_y",pos_y_target)) 
+            {  
+                ROS_ERROR("Could not read target_y .");
+                return false;
+            }
+        
         return true;
 
     }
