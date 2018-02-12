@@ -6,7 +6,6 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /Marker2
       Splitter Ratio: 0.5
     Tree Height: 514
   - Class: rviz/Selection
@@ -72,6 +71,30 @@ Visualization Manager:
       Radius: 0.100000001
       Reference Frame: <Fixed Frame>
       Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /uav2/quad_marker
+      Name: Marker
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /uav3/quad_marker
+      Name: Marker
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /uav4/quad_marker
+      Name: Marker
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -97,7 +120,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 38.8957329
+      Distance: 55.7578201
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -112,10 +135,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.839794934
+      Pitch: 0.579794586
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.41722143
+      Yaw: 5.56540298
     Saved: ~
 Window Geometry:
   Displays:
@@ -133,5 +156,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 1202
-  X: 50
-  Y: 210
+  X: 43
+  Y: 200
