@@ -31,6 +31,14 @@ namespace quadrotor_controller
         //-- nodehandle
 		ros::NodeHandle nodeHandle_;
 
+		//-- topics 
+		std::string pose_sub_topic_;
+		std::string euler_sub_topic_;
+		std::string vel_pub_topic_;
+		std::string target_pub_marker_;
+		std::string quad_pub_marker_;
+		//--
+
 		
         //-- states sub
 		ros::Subscriber poseSub_;
@@ -68,8 +76,8 @@ namespace quadrotor_controller
 		double momentz_;
 
 	   //--Target point position
-		double pos_x_target = 10.0;
-		double pos_y_target = 10.0; 
+		double pos_x_target = 0.0;
+		double pos_y_target = 0.0; 
     	double pos_z_target = 10.0;
 		double yaw_target = 0.0;
 		double dyaw_target= 0.0;
